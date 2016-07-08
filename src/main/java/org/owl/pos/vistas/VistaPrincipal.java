@@ -5,20 +5,26 @@
  */
 package org.owl.pos.vistas;
 
+import org.owl.pos.controladores.ControladorVistaPrincipal;
 import org.owl.pos.vistas.componentes.MenuDeConsola;
 
 /**
  *
  * @author raphapy
  */
-public class VistaPrincipal {
+public class VistaPrincipal implements Visualizable {
+
+    private final ControladorVistaPrincipal controlador;
     
-    public static void main(String[] args) {
-        String[] opciones = {"Opción A", "Opción B", "Opción C"};
-        MenuDeConsola menu = new MenuDeConsola(opciones);
-        menu.mostrarMenu();
-        int opcion = menu.solicitarOpcion();
-        System.out.println("Ha elegido la opción "+ opcion);
+    public VistaPrincipal(ControladorVistaPrincipal controlador) {
+        this.controlador = controlador;
     }
     
+    @Override
+    public void visualizar() {
+        MenuDeConsola menu = new MenuDeConsola(controlador.obtenerNombresAcciones());
+        menu.mostrarMenu();
+        int accion = menu.solicitarOpcion();
+        controlador.procesarAccion(accion);
+    }
 }
