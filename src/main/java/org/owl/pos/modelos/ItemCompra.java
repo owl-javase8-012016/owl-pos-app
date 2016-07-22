@@ -37,4 +37,10 @@ public class ItemCompra implements Identificable {
     public double getCostoItem(){
         return this.costoItem;
     }
+
+    @Override
+    public String toString() {
+        return  id + "\t" + articulo + "\t" + cantidad + "\t" + costoItem;
+    }
+    
 }
