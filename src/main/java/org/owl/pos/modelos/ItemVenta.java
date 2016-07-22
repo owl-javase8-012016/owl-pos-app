@@ -7,7 +7,7 @@ package org.owl.pos.modelos;
 
 /**
  *
- * @author fcabral
+ * @author fmorel
  */
 class ItemVenta {
     
@@ -46,9 +46,6 @@ class ItemVenta {
 
     public void setCostoItem(Double costoItem) {
         this.costoItem = costoItem;
-    }
-    
-    
-   
-    
+    } 
+
 }
