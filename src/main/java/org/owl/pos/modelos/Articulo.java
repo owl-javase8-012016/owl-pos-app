@@ -73,4 +73,11 @@ public class Articulo implements Identificable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return id + "\t" + codigo + "\t" +  descripcion + "\t" + precio + "\t" + porcentajeImpuesto; 
+    }
+    
+    
 }
