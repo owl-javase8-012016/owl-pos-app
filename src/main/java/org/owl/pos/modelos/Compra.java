@@ -5,6 +5,7 @@
  */
 package org.owl.pos.modelos;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -103,5 +104,16 @@ public class Compra implements Identificable {
             return false;
         }
         return true;
+    }
+    
+    public String toString(){
+        SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
+        
+        String fechaFormateada = formatDate.format(fechaCompra);
+        
+        
+        return  id + "\t" + timbradoFactura + "\t" + numeroFactura + "\t" + proveedor + "\t"
+                + itemsCompra ;
+    
     }
 }
