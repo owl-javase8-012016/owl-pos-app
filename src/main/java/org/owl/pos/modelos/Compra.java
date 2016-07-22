@@ -21,12 +21,13 @@ public class Compra implements Identificable {
     private String numeroFactura;
     private Proveedor proveedor;
     private List<ItemCompra> itemsCompra;
+    private Long id;
     
     
     
     @Override
     public Long getId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return id;
     }
     
     public Compra(){
@@ -72,5 +73,9 @@ public class Compra implements Identificable {
     public void setItemsCompra(List<ItemCompra> itemsCompra) {
         this.itemsCompra = itemsCompra;
     }
-    
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

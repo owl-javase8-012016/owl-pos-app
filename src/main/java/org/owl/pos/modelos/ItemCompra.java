@@ -13,15 +13,22 @@ public class ItemCompra implements Identificable {
     private Articulo articulo;
     private int cantidad;
     private Double costoItem;
+    private Long id;
 
     @Override
     public Long getId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return id;
     }
+    
     public Double calcularCostoUnitarioArticulo(){
         return (cantidad/costoItem);
     }
     public int getCantidad(){
         return cantidad;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
     }
 }
