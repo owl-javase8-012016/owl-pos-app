@@ -15,6 +15,7 @@ public class Articulo implements Identificable {
     private String descripcion;
     private Double precio;
     private Double porcentajeImpuesto;
+    private Long id;
 
     private int vexistencia;
     
@@ -41,11 +42,6 @@ public class Articulo implements Identificable {
     }
     public void setPorcentajeImpuesto(Double porcentajeImpuesto){
         this.porcentajeImpuesto = porcentajeImpuesto;
-    }    
-
-    @Override
-    public Long getId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getExistencia() {
@@ -67,5 +63,14 @@ public class Articulo implements Identificable {
     public void restarExistencia(int n){
         vexistencia = vexistencia - n;
     }
-    
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

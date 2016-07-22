@@ -5,6 +5,9 @@
  */
 package org.owl.pos.controladores;
 
+import org.owl.pos.vistas.VistaPrincipal;
+import org.owl.pos.vistas.Visualizable;
+
 /**
  *
  * @author user
@@ -28,7 +31,17 @@ public class ControladorVistaAdministrarArticulos implements Controlador{
     
     @Override
     public void procesarAccion(int indiceAccion) {
-        System.out.println("Se escogio la acción: "+Accion.values()[indiceAccion].getNombre());
+        Accion accion = Accion.values()[indiceAccion];
+        Controlador controlador = null;
+        Visualizable vista= null;
+        switch(accion) {
+            case VOLVER:
+                controlador = new ControladorVistaPrincipal();
+                vista = new VistaPrincipal((ControladorVistaPrincipal)controlador);
+                
+        }
+        
+        vista.visualizar();
     }
  
     public String[] obtenerNombresAcciones(){

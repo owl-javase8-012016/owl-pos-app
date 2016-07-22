@@ -21,6 +21,7 @@ public class Persona implements Identificable {
     private String email;
     private char sexo;
     private int edad;
+    private Long id;
 
     public Persona() {
 
@@ -108,7 +109,11 @@ public class Persona implements Identificable {
 
     @Override
     public Long getId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return id;
     }
 
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    } 
 }

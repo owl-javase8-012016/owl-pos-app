@@ -11,4 +11,5 @@ package org.owl.pos.modelos;
  */
 public interface Identificable {
     Long getId();
+    void setId(Long id);
 }
