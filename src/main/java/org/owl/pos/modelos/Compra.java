@@ -5,6 +5,7 @@
  */
 package org.owl.pos.modelos;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,9 +13,6 @@ import java.util.List;
  *
  * @author user
  */
-//calcular total venta
-//calcular subtotal venta
-//
 public class Compra implements Identificable {
     private Date fechaCompra;
     private String timbradoFactura;
@@ -24,15 +22,17 @@ public class Compra implements Identificable {
     private Long id;
     
     
+    public Compra(){
+        itemsCompra = new ArrayList<>();
+    }
     
     @Override
     public Long getId() {
         return id;
     }
     
-    public Compra(){
-        
-    }
+    
+
     
     public Date getFechaCompra() {
         return fechaCompra;

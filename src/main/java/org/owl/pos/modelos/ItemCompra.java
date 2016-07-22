@@ -31,4 +31,10 @@ public class ItemCompra implements Identificable {
     public void setId(Long id) {
         this.id = id;
     }
+    public void setCostoItem(double costoItem){
+        this.costoItem = costoItem;
+    }
+    public double getCostoItem(){
+        return this.costoItem;
+    }
 }
