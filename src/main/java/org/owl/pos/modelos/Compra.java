@@ -106,14 +106,15 @@ public class Compra implements Identificable {
         return true;
     }
     
+    @Override
     public String toString(){
         SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
         
         String fechaFormateada = formatDate.format(fechaCompra);
         
         
-        return  id + "\t" + timbradoFactura + "\t" + numeroFactura + "\t" + proveedor + "\t"
-                + itemsCompra ;
+        return  id + "\t" +  fechaFormateada + "\t" + timbradoFactura + "\t" + 
+                numeroFactura + "\t" + proveedor + "\t" + itemsCompra ;
     
     }
 }
