@@ -101,5 +101,8 @@ public class Articulo implements Identificable {
         return true;
     }
     
-    
+    @Override
+    public String toString() {
+        return id + "\t" + codigo + "\t" +  descripcion + "\t" + precio + "\t" + porcentajeImpuesto; 
+    }
 }
