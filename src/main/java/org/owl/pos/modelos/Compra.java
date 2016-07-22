@@ -1,0 +1,76 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package org.owl.pos.modelos;
+
+import java.util.Date;
+import java.util.List;
+
+/**
+ *
+ * @author user
+ */
+//calcular total venta
+//calcular subtotal venta
+//
+public class Compra implements Identificable {
+    private Date fechaCompra;
+    private String timbradoFactura;
+    private String numeroFactura;
+    private Proveedor proveedor;
+    private List<ItemCompra> itemsCompra;
+    
+    
+    
+    @Override
+    public Long getId() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public Compra(){
+        
+    }
+    
+    public Date getFechaCompra() {
+        return fechaCompra;
+    }
+
+    public void setFechaCompra(Date fechaCompra) {
+        this.fechaCompra = fechaCompra;
+    }
+
+    public String getTimbradoFactura() {
+        return timbradoFactura;
+    }
+
+    public void setTimbradoFactura(String timbradoFactura) {
+        this.timbradoFactura = timbradoFactura;
+    }
+
+    public String getNumeroFactura() {
+        return numeroFactura;
+    }
+
+    public void setNumeroFactura(String numeroFactura) {
+        this.numeroFactura = numeroFactura;
+    }
+
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
+    }
+
+    public List<ItemCompra> getItemsCompra() {
+        return itemsCompra;
+    }
+
+    public void setItemsCompra(List<ItemCompra> itemsCompra) {
+        this.itemsCompra = itemsCompra;
+    }
+    
+}
