@@ -6,6 +6,7 @@
 package org.owl.pos.modelos;
 
 import java.util.Date;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -43,5 +44,14 @@ public class Proveedor extends Persona {
 
     public void setEstado(char estado) {
         this.estado = estado;
+    }
+    
+    @Override
+    public String toString(){
+        SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
+        String fechaFmtAlta = fmt.format(fechaAlta);
+        String fechaFmtBaja = fmt.format(fechaBaja);
+        return super.getId() + "\t" + fechaFmtAlta + "\t" + fechaFmtBaja;
+        
     }
 }
