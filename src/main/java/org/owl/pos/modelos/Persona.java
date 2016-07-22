@@ -117,8 +117,8 @@ public class Persona implements Identificable {
     @Override
     public void setId(Long id) {
         this.id = id;
-    } 
-
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -142,5 +142,11 @@ public class Persona implements Identificable {
             return false;
         }
         return true;
+    }
+    
+    @Override
+    public String toString() {
+        String sexoStr = sexo == 'M' ? "Masculino" : "Femenino";
+        return id + "\t" + numeroDocumento + "\t" + nombre + "\t" + apellido + "\t" + sexoStr + "\t" + telefono + "\t"+ email;
     }
 }

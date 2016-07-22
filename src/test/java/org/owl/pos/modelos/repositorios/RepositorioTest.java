@@ -23,19 +23,13 @@ public class RepositorioTest {
     
     public RepositorioTest() {
     }
-    
-    private RepositorioImpl repo;
-            
-    @Before
-    public void setUp() {
-        repo = RepositorioImpl.getInstance();
-    }
 
     /**
      * Test of crear method, of class Repositorio.
      */
     @Test
     public void testCrear() {
+        RepositorioImpl repo = new RepositorioImpl();
         Persona persona = new Persona();
         persona.setNombre("Rafael");
         persona.setApellido("Benegas");
@@ -50,6 +44,7 @@ public class RepositorioTest {
      */
     @Test
     public void testModificar() {
+        RepositorioImpl repo = new RepositorioImpl();
         Persona persona = new Persona();
         persona.setNombre("Rafael");
         persona.setApellido("Benegas");
@@ -72,6 +67,7 @@ public class RepositorioTest {
      */
     @Test
     public void testEliminar() {
+        RepositorioImpl repo = new RepositorioImpl();
         Persona persona = new Persona();
         persona.setNombre("Rafael");
         persona.setApellido("Benegas");
@@ -92,6 +88,7 @@ public class RepositorioTest {
      */
     @Test
     public void testBuscar_String() {
+        RepositorioImpl repo = new RepositorioImpl();
         Persona persona = new Persona();
         persona.setNombre("Rafael");
         persona.setApellido("Benegas");
@@ -124,6 +121,7 @@ public class RepositorioTest {
      */
     @Test
     public void testBuscar_Long() {
+        RepositorioImpl repo = new RepositorioImpl();
         Persona persona = new Persona();
         persona.setNombre("Rafael");
         persona.setApellido("Benegas");
@@ -143,20 +141,10 @@ public class RepositorioTest {
 
     public static class RepositorioImpl extends Repositorio {
         private long secuencia;
-        private static RepositorioImpl INSTANCE;
-        
-        public static RepositorioImpl getInstance() {
-            if(INSTANCE==null) {
-                INSTANCE  = new RepositorioImpl();
-            }
-            
-            return INSTANCE;
-        }
         
         @Override
         public void generarIdentificacion(Identificable entidad) {
             entidad.setId(++secuencia);
         }
     }
-    
 }
