@@ -18,6 +18,7 @@ public class Venta implements Identificable {
     private String numeroFactura;
     private Cliente clientes;
     private List<ItemVenta> items;
+    private Long id;
     
     
     public Venta (){
@@ -34,13 +35,8 @@ public class Venta implements Identificable {
             
         }
         
-        
+        return total; 
     }
-    
-    
-    
-    
-    
     
     public Date getFechaVenta() {
         return fechaVenta;
@@ -76,7 +72,12 @@ public class Venta implements Identificable {
 
     @Override
     public Long getId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id=id;
     }
   
     
