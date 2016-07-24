@@ -9,7 +9,7 @@ import org.owl.pos.controladores.ControladorVistaAdministrarArticulos;
 import org.owl.pos.vistas.Visualizable;
 import org.owl.pos.vistas.componentes.MenuDeConsola;
 import static org.owl.pos.vistas.componentes.utilitarios.UtilitarioConsola.imprimirTituloPantalla;
-import static org.owl.pos.vistas.componentes.utilitarios.UtilitarioConsola.limpiarLinea;
+import static org.owl.pos.vistas.componentes.utilitarios.UtilitarioConsola.limpiarPantalla;
 
 /**
  *
@@ -25,7 +25,7 @@ public class VistaAdministrarArticulos implements Visualizable{
 
     @Override
     public void visualizar() {
-        limpiarLinea();
+        limpiarPantalla();
         imprimirTituloPantalla("Administrar Artículos");
         MenuDeConsola menu = new MenuDeConsola((controlador.obtenerNombresAcciones()));
         menu.mostrarMenu();
