@@ -5,10 +5,10 @@
  */
 package org.owl.pos.controladores;
 
-import org.owl.pos.vistas.VistaAdministrarArticulos;
-import org.owl.pos.vistas.VistaAdministrarClientes;
+import org.owl.pos.vistas.articulos.VistaAdministrarArticulos;
+import org.owl.pos.vistas.clientes.VistaAdministrarClientes;
 import org.owl.pos.vistas.Visualizable;
-import org.owl.pos.vistas.componentes.VistaAdministrarProveedores;
+import org.owl.pos.vistas.proveedores.VistaAdministrarProveedores;
 
 /**
  *

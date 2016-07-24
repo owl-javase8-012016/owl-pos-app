@@ -3,21 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.owl.pos.vistas;
+package org.owl.pos.vistas.proveedores;
 
-import org.owl.pos.controladores.ControladorVistaAdministrarClientes;
+import org.owl.pos.controladores.ControladorVistaAdminstrarProveedores;
+import org.owl.pos.vistas.Visualizable;
 import org.owl.pos.vistas.componentes.MenuDeConsola;
 
 /**
  *
  * @author user
  */
-public class VistaAdministrarClientes implements Visualizable{
+public class VistaAdministrarProveedores implements Visualizable {
     
-    private final ControladorVistaAdministrarClientes controlador;
+    private ControladorVistaAdminstrarProveedores controlador; 
     
-    public VistaAdministrarClientes(ControladorVistaAdministrarClientes controlador){
+    public VistaAdministrarProveedores(ControladorVistaAdminstrarProveedores controlador) {
         this.controlador = controlador;
+        
     }
     
     @Override

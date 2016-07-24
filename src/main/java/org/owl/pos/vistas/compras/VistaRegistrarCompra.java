@@ -3,30 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.owl.pos.vistas.componentes;
+package org.owl.pos.vistas.compras;
 
-import org.owl.pos.controladores.ControladorVistaAdminstrarProveedores;
+import org.owl.pos.controladores.ControladorVistaRegistrarCompra;
 import org.owl.pos.vistas.Visualizable;
+import org.owl.pos.vistas.componentes.MenuDeConsola;
 
 /**
  *
  * @author user
  */
-public class VistaAdministrarProveedores implements Visualizable {
+public class VistaRegistrarCompra implements Visualizable{
     
-    private ControladorVistaAdminstrarProveedores controlador; 
+    private ControladorVistaRegistrarCompra controlador;
     
-    public VistaAdministrarProveedores(ControladorVistaAdminstrarProveedores controlador) {
+    public VistaRegistrarCompra(ControladorVistaRegistrarCompra controlador){
         this.controlador = controlador;
-        
     }
-    
+
     @Override
-    public void visualizar(){
+    public void visualizar() {
+        
         MenuDeConsola menu = new MenuDeConsola(controlador.obtenerNombresAcciones());
         menu.mostrarMenu();
         int accion = menu.solicitarOpcion();
         controlador.procesarAccion(accion);
+        
     }
+    
     
 }
