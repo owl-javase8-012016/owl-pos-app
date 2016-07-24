@@ -8,6 +8,8 @@ package org.owl.pos.vistas.compras;
 import org.owl.pos.controladores.ControladorVistaRegistrarCompra;
 import org.owl.pos.vistas.Visualizable;
 import org.owl.pos.vistas.componentes.MenuDeConsola;
+import static org.owl.pos.vistas.componentes.utilitarios.UtilitarioConsola.imprimirTituloPantalla;
+import static org.owl.pos.vistas.componentes.utilitarios.UtilitarioConsola.limpiarPantalla;
 
 /**
  *
@@ -15,7 +17,7 @@ import org.owl.pos.vistas.componentes.MenuDeConsola;
  */
 public class VistaRegistrarCompra implements Visualizable{
     
-    private ControladorVistaRegistrarCompra controlador;
+    private final ControladorVistaRegistrarCompra controlador;
     
     public VistaRegistrarCompra(ControladorVistaRegistrarCompra controlador){
         this.controlador = controlador;
@@ -23,13 +25,11 @@ public class VistaRegistrarCompra implements Visualizable{
 
     @Override
     public void visualizar() {
-        
+        limpiarPantalla();
+        imprimirTituloPantalla("Registrar Compra");
         MenuDeConsola menu = new MenuDeConsola(controlador.obtenerNombresAcciones());
         menu.mostrarMenu();
         int accion = menu.solicitarOpcion();
         controlador.procesarAccion(accion);
-        
     }
-    
-    
 }

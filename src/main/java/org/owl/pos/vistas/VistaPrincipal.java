@@ -7,6 +7,8 @@ package org.owl.pos.vistas;
 
 import org.owl.pos.controladores.ControladorVistaPrincipal;
 import org.owl.pos.vistas.componentes.MenuDeConsola;
+import static org.owl.pos.vistas.componentes.utilitarios.UtilitarioConsola.imprimirTituloPantalla;
+import static org.owl.pos.vistas.componentes.utilitarios.UtilitarioConsola.limpiarPantalla;
 
 /**
  *
@@ -22,6 +24,8 @@ public class VistaPrincipal implements Visualizable {
     
     @Override
     public void visualizar() {
+        limpiarPantalla();
+        imprimirTituloPantalla("Aplicación POS");
         MenuDeConsola menu = new MenuDeConsola(controlador.obtenerNombresAcciones());
         menu.mostrarMenu();
         int accion = menu.solicitarOpcion();

@@ -8,6 +8,8 @@ package org.owl.pos.vistas.clientes;
 import org.owl.pos.controladores.ControladorVistaAdministrarClientes;
 import org.owl.pos.vistas.Visualizable;
 import org.owl.pos.vistas.componentes.MenuDeConsola;
+import static org.owl.pos.vistas.componentes.utilitarios.UtilitarioConsola.imprimirTituloPantalla;
+import static org.owl.pos.vistas.componentes.utilitarios.UtilitarioConsola.limpiarLinea;
 
 /**
  *
@@ -23,6 +25,8 @@ public class VistaAdministrarClientes implements Visualizable{
     
     @Override
     public void visualizar(){
+        limpiarLinea();
+        imprimirTituloPantalla("Administrar Clientes");
         MenuDeConsola menu = new MenuDeConsola(controlador.obtenerNombresAcciones());
         menu.mostrarMenu();
         int accion = menu.solicitarOpcion();

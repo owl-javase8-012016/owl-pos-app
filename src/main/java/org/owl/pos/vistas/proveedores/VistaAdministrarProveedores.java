@@ -8,6 +8,8 @@ package org.owl.pos.vistas.proveedores;
 import org.owl.pos.controladores.ControladorVistaAdminstrarProveedores;
 import org.owl.pos.vistas.Visualizable;
 import org.owl.pos.vistas.componentes.MenuDeConsola;
+import static org.owl.pos.vistas.componentes.utilitarios.UtilitarioConsola.imprimirTituloPantalla;
+import static org.owl.pos.vistas.componentes.utilitarios.UtilitarioConsola.limpiarPantalla;
 
 /**
  *
@@ -15,19 +17,19 @@ import org.owl.pos.vistas.componentes.MenuDeConsola;
  */
 public class VistaAdministrarProveedores implements Visualizable {
     
-    private ControladorVistaAdminstrarProveedores controlador; 
+    private final ControladorVistaAdminstrarProveedores controlador; 
     
     public VistaAdministrarProveedores(ControladorVistaAdminstrarProveedores controlador) {
         this.controlador = controlador;
-        
     }
     
     @Override
     public void visualizar(){
+        limpiarPantalla();
+        imprimirTituloPantalla("Administrar Proveedores");
         MenuDeConsola menu = new MenuDeConsola(controlador.obtenerNombresAcciones());
         menu.mostrarMenu();
         int accion = menu.solicitarOpcion();
         controlador.procesarAccion(accion);
     }
-    
 }
