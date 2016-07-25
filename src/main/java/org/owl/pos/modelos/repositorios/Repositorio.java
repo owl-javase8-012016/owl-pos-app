@@ -67,7 +67,9 @@ public abstract class Repositorio {
         }
         
         return repositorio.values()
-                          .stream()
+                          .parallelStream()
+                          //ordenado por ID de forma ascendente
+                          .sorted((o1,o2)->o1.getId().compareTo(o2.getId()))
                           .filter(e-> {
                                         String valor = e.toString()
                                                         .toLowerCase()
@@ -87,6 +89,37 @@ public abstract class Repositorio {
         }
         
         return repositorio.get(id);
+    }
+    
+    /**
+     * Realiza una búsqueda paginada basada en un patrón que coincida con 
+     * el resultado de la ejecución del método toString del Identificable y 
+     * delimitada por la cantidad de elementos solicitados, empezando por el 
+     * índice inicial especificado.
+     * 
+     * @param filtros {@code String} patrón de búsqueda.
+     * @param indiceInicial {@code int} que indica el índice del primer 
+     * elemento a retornar.
+     * @param cantidadElementos {@code int} que indica la cantidad de elementos 
+     * a retornar a partir del primer elemento solicitado por el parámetro 
+     * {@code indiceInicial}, incluído el mismo.
+     * @return 
+     */
+    public ListaPaginada buscar(String filtros, int indiceInicial, int cantidadElementos) {
+        List<Identificable> listaTotal = this.buscar(filtros);
+        int indiceFinalPaginacion = indiceInicial+cantidadElementos;
+        int indiceMaximo = listaTotal.size()-1;
+        
+        if(indiceInicial<0 || indiceInicial>indiceMaximo) {
+            throw new IllegalArgumentException("Índice inicial está fuera del límite de la lista de resultados.");
+        }
+            
+        //Si se desborda el tamaño se retorna todos los elementos restantes
+        if (indiceFinalPaginacion > listaTotal.size()) {
+            indiceFinalPaginacion = listaTotal.size();
+        }
+        
+        return new ListaPaginada(listaTotal.subList(indiceInicial, indiceFinalPaginacion), listaTotal.size());
     }
     
     /**
