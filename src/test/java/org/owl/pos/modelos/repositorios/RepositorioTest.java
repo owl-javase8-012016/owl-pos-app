@@ -6,8 +6,11 @@
 package org.owl.pos.modelos.repositorios;
 
 import java.util.List;
+import org.hamcrest.Matchers;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasItems;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.iterableWithSize;
 import static org.hamcrest.Matchers.not;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -130,6 +133,44 @@ public class RepositorioTest {
         
         Persona encontrado = (Persona) repo.buscar(persona.getId());
         assertEquals(persona, encontrado);
+    }
+    
+    @Test
+    public void testBuscarConListaPaginada() {
+        
+        RepositorioImpl repo = new RepositorioImpl();
+        
+        //creamos 10000 entidades que tengan en comun algún patron de busqueda
+        for(int i=0;i<10000;i++) {
+            Persona persona = new Persona();
+            persona.setNombre("Rafael");
+            persona.setApellido("Benegas");
+            persona.setNumeroDocumento(String.valueOf(2300000+i));
+            repo.crear(persona);
+        }
+        
+        //otros 5000 que no tengan el patron comun de busqueda
+        for(int i=0;i<5000;i++) {
+            Persona persona = new Persona();
+            persona.setNombre("Miguel");
+            persona.setApellido("Castillo");
+            persona.setNumeroDocumento(String.valueOf(2300000+i));
+            repo.crear(persona);
+        }
+        
+        String patronBusqueda = "bene";
+        ListaPaginada resultado = repo.buscar(patronBusqueda, 5000, 30);
+        assertThat(resultado.getTotalDatos(), is(10000));
+        assertThat(resultado.getLista(), is(iterableWithSize(30)));
+        assertThat(resultado.getLista().get(0).getId(), is(5001L));
+        assertThat(resultado.getLista().get(29).getId(), is(5030L));
+        
+        String patronBusqueda2 = "miguel";
+        ListaPaginada resultado2 = repo.buscar(patronBusqueda2, 0, 30);
+        assertThat(resultado2.getTotalDatos(), is(5000));
+        assertThat(resultado2.getLista(), is(iterableWithSize(30)));
+        assertThat(resultado2.getLista().get(0).getId(), is(10001L));
+        assertThat(resultado2.getLista().get(29).getId(), is(10030L));
     }
 
     /**

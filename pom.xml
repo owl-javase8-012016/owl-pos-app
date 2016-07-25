@@ -59,6 +59,11 @@
                 </executions>
                 <configuration>
                   <mainClass>${mainClass}</mainClass>
+                  <arguments>
+                      <argument>-Xdebug</argument>
+                      <argument>-Xrunjdwp:transport=dt_socket,server=n,address=40745</argument>
+                      <argument>-classpath %classpath ${mainClass}</argument>
+                  </arguments>
                 </configuration>
               </plugin>
         </plugins>
