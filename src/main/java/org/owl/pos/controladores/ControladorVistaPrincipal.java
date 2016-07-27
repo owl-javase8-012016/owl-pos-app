@@ -8,6 +8,7 @@ package org.owl.pos.controladores;
 import org.owl.pos.vistas.articulos.VistaAdministrarArticulos;
 import org.owl.pos.vistas.clientes.VistaAdministrarClientes;
 import org.owl.pos.vistas.Visualizable;
+import org.owl.pos.vistas.compras.VistaRegistrarCompra;
 import org.owl.pos.vistas.proveedores.VistaAdministrarProveedores;
 
 /**
@@ -40,27 +41,36 @@ public class ControladorVistaPrincipal implements Controlador {
     @Override
     public void procesarAccion(int indiceAccion) {
         Accion accion = Accion.values()[indiceAccion];
-        Controlador controlador = null;
         Visualizable vista = null;
-        
         switch(accion) {
             case ADMINISTRAR_ARTICULOS:
-                controlador = 
-                            new ControladorVistaAdministrarArticulos();
                 vista = 
-                        new VistaAdministrarArticulos((ControladorVistaAdministrarArticulos)controlador);
+                        new VistaAdministrarArticulos(new ControladorVistaAdministrarArticulos());
                 break;
             case ADMINISTRAR_CLIENTES:
-                controlador = new ControladorVistaAdministrarClientes();
-                vista = new VistaAdministrarClientes((ControladorVistaAdministrarClientes)controlador);
+                vista = new VistaAdministrarClientes(new ControladorVistaAdministrarClientes());
                 break;
             case ADMINISTRAR_PROVEEDORES:
-                controlador = new ControladorVistaAdminstrarProveedores();
-                vista = new VistaAdministrarProveedores((ControladorVistaAdminstrarProveedores)controlador);
+                vista = new VistaAdministrarProveedores(new ControladorVistaAdminstrarProveedores());
                 break;
+            case REGISTRAR_COMPRA:
+                vista = new VistaRegistrarCompra(new ControladorVistaRegistrarCompra());
+                break;
+            case REGISTRAR_VENTA:
+            case CONSULTAR_COMPRAS:
+            case SALIR:
+                vista = new Visualizable() {
+                            @Override
+                            public void visualizar() {
+                                throw new UnsupportedOperationException("Vista no implementada");
+                            }
+                        };
+                break; 
         }
         
-        vista.visualizar();
+        if(vista!=null) {
+            vista.visualizar();    
+        }
     }
 
     public String[] obtenerNombresAcciones() {
